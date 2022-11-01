@@ -1,0 +1,57 @@
+1. Permission vs. forgiveness
+Permission 1 attribute:
+5000000 loops, best of 5: 54.1 nsec per loop
+Forgiveness 1 attribute:
+10000000 loops, best of 5: 34.3 nsec per loop
+Permission 3 attributes:
+2000000 loops, best of 5: 140 nsec per loop
+Forgiveness 3 attributes:
+5000000 loops, best of 5: 71 nsec per loop
+Permission missing attribute:
+5000000 loops, best of 5: 62.5 nsec per loop
+Forgiveness missing attribute:
+1000000 loops, best of 5: 328 nsec per loop
+
+2. Find element
+While loop:
+5000 loops, best of 5: 47.9 usec per loop
+For loop:
+5000 loops, best of 5: 40.6 usec per loop
+List comprehension:
+1000 loops, best of 5: 216 usec per loop
+Generator:
+10000 loops, best of 5: 39.4 usec per loop
+
+3. Filter list
+Loop:
+10 loops, best of 5: 26.4 msec per loop
+Filter:
+10 loops, best of 5: 39.8 msec per loop
+Comprehension:
+10 loops, best of 5: 24.7 msec per loop
+
+4. Membership (checking number 500,000 in a 1,000,000 numbers list)
+For loop:
+50 loops, best of 5: 4.39 msec per loop
+In list:
+100 loops, best of 5: 2.9 msec per loop
+In set (cheating):
+10000000 loops, best of 5: 35.4 nsec per loop
+In set (proper):
+20 loops, best of 5: 11.6 msec per loop
+
+5. dict() vs. {}
+dict()
+10000000 loops, best of 5: 28.3 nsec per loop
+{}
+20000000 loops, best of 5: 13.5 nsec per loop
+
+6. Remove duplicates
+For loop:
+1 loop, best of 5: 303 msec per loop
+List comprehension:
+1 loop, best of 5: 307 msec per loop
+Set:
+50 loops, best of 5: 6.06 msec per loop
+Dict:
+20 loops, best of 5: 10.7 msec per loop
