@@ -2,7 +2,7 @@
 
 def compute_sum_of_powers():
     total = 0
-    for x in range(1_000_000):
+    for x in range(1_000_001):
         total = total + x*x
     return total
 
