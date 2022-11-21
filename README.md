@@ -40,20 +40,8 @@ See the `stricter_benchmarks.py` file for how to achieve that.
 
 I've used that benchmarking method on a couple of examples in this repository, and the difference was negligible compared to the simple way of benchmarking. But I still had a bigger problem. No matter if I ran the simple or strict benchmarks, each rerun gave me slightly different results. You can try it yourself - run the `python -m timeit ...` command from any of the examples a couple of times, and you will get slightly different results each time. The difference is small (just a few percent), but it's there. Our programs don't run in a vacuum, and whatever other processes I have running on my computer, they will affect the benchmarks.
 
-Then another idea came to my mind - Docker! If I want to run a script in isolation, docker seems to be a good choice. And indeed, it was a good choice! I tried to reproduce my local setup in a docker container by:
+Then another idea came to my mind - Docker! If I want to run a script in isolation, docker seems to be a good choice. ~~And indeed, it was a good choice!~~
 
-* Using a lightweight image with Python 3.10.4
-* Mounting the folder to have access to my example scripts
-* Running the `python -m timeit ...` command
-
-I ended up with command like this:
-
-```shell
-$ docker run -w /home -it -v $(pwd):/home python:3.10.4-alpine python -m timeit -s "from filter_list import test_comprehension" "test_comprehension()"
-```
-
-Now when I tried to rerun the benchmark command multiple times, I was either getting the same number or a much smaller difference (around 1%).
-
-So if you want to run the benchmarks in a stricter setup, I can recommend Docker. But for this presentation, the actual numbers don't matter as much as showing which code examples are slower and which are faster. So for the sake of simplicity (and to squeeze in one more example instead of trying to explain some complex benchmarking setup), I stick with "simple benchmarks".
+**Updated 21.11.2022**: After publishing the [How to Benchmark (Python) Code](https://switowski.com/blog/how-to-benchmark-python-code) article, one reader pointed out that Docker should not have as much impact on the isolation as I originally assumed. Another reader pointed me to another article from [Itamar Turner-Trauring](https://pythonspeed.com/articles/docker-performance-overhead/) where he also dug into some inconsistencies when running benchmarks in Docker. I've tested my benchmarks once more, this time more thoroughly, and with more examples and indeed, it turns out that Docker didn't really help make them more consistent.
 
 If you know other ways of running objective benchmarks, please let me know!
