@@ -40,7 +40,10 @@ python -m timeit -s "from any import test_any_end" "test_any_end()"
 This is especially visible for the test_or_ones() and test_or_start() functions, where the first argument is "1" so we
 stop the checking and "or" finishes much faster than "any()".
 
+
 See this StackOverflow question for more details: https://stackoverflow.com/questions/22510205/all-vs-and-and-any-vs-or
+One useful use-case for any() is when you want to check a variable number of arguments, like:
+if any(isOdd(x) for x in data)
 """
 
 a,b,c,d,e,f = 0,0,0,1,0,0
